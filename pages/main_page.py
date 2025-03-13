@@ -2,18 +2,19 @@ import allure
 
 from locators.locators import MainPageLocators
 from pages.base_page import BasePage
-from URL import MAINPAGE_URL
+from URL import BASE_URL
 
-#главная страница
+
+# главная страница
 class MainPage(BasePage):
-    url = MAINPAGE_URL
+    url = BASE_URL
     locators = MainPageLocators
-    pagelocator = locators.TITLE
+    page_locator = locators.TITLE
 
     @allure.step('Открываем сайт Яндекс Самокат')
     def open_yandex_scooter(self):
         self.open_site(self.url)
-        self.wait_page_to_be_open()
+        self.wait_page_to_be_open(self.url, self.page_locator)
 
     @allure.step('Скролим до блока  "Вопросы о важном"')
     def scroll_to_faq_list(self):
@@ -47,3 +48,7 @@ class MainPage(BasePage):
     def click_order_below(self):
         self.scroll_to_element(self.locators.ORDER_BUTTON_BELOW)
         self.click_element(self.locators.ORDER_BUTTON_BELOW)
+
+    @allure.step("Клик по лого Яндекс")
+    def click_yandex_logo(self):
+        self.find_element(self.locators.LOGO_YANDEX).click()

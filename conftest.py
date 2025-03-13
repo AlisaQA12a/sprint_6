@@ -1,14 +1,11 @@
 import pytest
-import random
 from selenium import webdriver
+from URL import BASE_URL
 
 
 @pytest.fixture
 def driver():
     browser = webdriver.Firefox()
-    browser.get('https://qa-scooter.praktikum-services.ru/')
+    browser.get(BASE_URL)
     yield browser
     browser.quit()
-
-
-

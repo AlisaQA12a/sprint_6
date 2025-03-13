@@ -13,7 +13,7 @@ class TestLogo:
         order_page.open_order_page()
         order_page.click_scooter_logo()
         main_page = MainPage(driver)
-        assert main_page.wait_page_to_be_open()
+        assert main_page.wait_page_to_be_open(main_page.url, main_page.page_locator)
 
     @allure.title('Тестируем переход на страницу ЯндексДзен по клику на логотип Яндекса')
     def test_logo_yandex(self, driver):
@@ -22,7 +22,3 @@ class TestLogo:
         main_page.click_yandex_logo()
         main_page.switch_tab()
         assert main_page.wait_for_url_change(DZEN_URL)
-
-
-
-

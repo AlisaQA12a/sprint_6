@@ -21,4 +21,3 @@ class TestOrderScooter:
         main_page.click_order_below()
         order_page = OrderPage(driver)
         assert order_page.order(test_data)
-

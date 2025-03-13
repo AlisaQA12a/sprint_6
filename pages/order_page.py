@@ -2,18 +2,19 @@ import allure
 
 from locators.locators import OrderLocators
 from pages.base_page import BasePage
-from URL import ORDERPAGE_URL
+from URL import BASE_URL, ORDER_PATH
 
-#страница заказа
+
+# страница заказа
 class OrderPage(BasePage):
-    url = ORDERPAGE_URL
+    url = BASE_URL + ORDER_PATH
     locators = OrderLocators
-    pagelocator = locators.TITLE
+    page_locator = locators.TITLE
 
     @allure.step('Открываем страницу заказа самоката')
     def open_order_page(self):
         self.open_site(self.url)
-        self.wait_page_to_be_open()
+        self.wait_page_to_be_open(self.url, self.page_locator)
 
     @allure.step('Заполняем первую форму')
     def fill_first_form(self, **faq_data):
@@ -64,9 +65,13 @@ class OrderPage(BasePage):
     def wait_for_ordered_successfully(self):
         return self.wait_for(self.locators.Popup.STATUS)
 
+    @allure.step("Клик по лого Самокат")
+    def click_scooter_logo(self):
+        self.find_element(self.locators.LOGO_SCOOTER).click()
+
     @allure.step('Заказываем самокат')
     def order(self, faq_data):
-        self.wait_page_to_be_open()
+        self.wait_page_to_be_open(self.url, self.page_locator)
 
         # заполнить первую форму
         self.fill_first_form(**faq_data)

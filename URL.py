@@ -1,3 +1,4 @@
 DZEN_URL = "https://dzen.ru/?yredirect=true"  #DZEN
-MAINPAGE_URL = "https://qa-scooter.praktikum-services.ru/"  #главная страница
-ORDERPAGE_URL = "https://qa-scooter.praktikum-services.ru/order"  #страница заказа
+
+BASE_URL = "https://qa-scooter.praktikum-services.ru/"  #Домен (главная страница)
+ORDER_PATH = "order"  #страница заказа
